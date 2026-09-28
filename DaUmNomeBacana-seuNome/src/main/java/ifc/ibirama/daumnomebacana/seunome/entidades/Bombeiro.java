@@ -4,24 +4,33 @@
  */
 package ifc.ibirama.daumnomebacana.seunome.entidades;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.time.LocalDate;
 
 /**
  *
  * @author aluno
  */
+
+@Entity
+@Table (name="Bombeiro")
 public class Bombeiro {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
     private String cpf;
-    private LocalDate dataNacimento;
+    private LocalDate dataNacimento;    
     private String nome;
     private String guerra;
-    
-    
-    public Bombeiro(){
-    
+
+    public Bombeiro() {
+
     }
-    
+
     /**
      * @return the id
      */
@@ -91,17 +100,28 @@ public class Bombeiro {
     public void setGuerra(String guerra) {
         this.guerra = guerra;
     }
+
     @Override
-    public boolean equals(Object obj){
+    public boolean equals(Object obj) {
         if (obj instanceof Bombeiro) {
-            Bombeiro aux = (Bombeiro)obj;
-            if (aux.getId().equals(this.id) && (aux.getCpf().equals(this.cpf))) {
-                  return true;
-            }else{
+            Bombeiro aux = (Bombeiro) obj;
+            if ((aux.getId() != null) || (aux.getCpf() != null)) {
+                if (aux.getId().equals(this.id) && (aux.getCpf().equals(this.cpf))) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            } else {
                 return false;
             }
-        }else{
+        } else {
             return false;
         }
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }
