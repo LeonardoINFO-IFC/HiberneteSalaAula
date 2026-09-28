@@ -4,6 +4,7 @@
  */
 package ifc.ibirama.daumnomebacana.seunome.entidades;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,9 +23,13 @@ public class Bombeiro {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column (name="bom_cpf", length = 11, unique = true, nullable = false)
     private String cpf;
-    private LocalDate dataNacimento;    
+    @Column (name="bom_data_nascimento", nullable = false)
+    private LocalDate dataNacimento;
+    @Column (name="bom_nome_completo", nullable = false, length = 45)    
     private String nome;
+    @Column (name="bom_nome_guerra", unique = true, nullable = false, length = 45)
     private String guerra;
 
     public Bombeiro() {
