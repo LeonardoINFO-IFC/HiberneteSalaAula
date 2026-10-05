@@ -20,5 +20,8 @@
 
         <!-- Cria/Atualiza as tabelas automaticamente no banco -->
         <property name="hibernate.hbm2ddl.auto">update</property>
+        <mapping class="ifc.ibirama.daumnomebacana.seunome.entidades.Bombeiro"></mapping>
+        <mapping class="ifc.ibirama.daumnomebacana.seunome.entidades.Viatura"></mapping>
+        <mapping class="ifc.ibirama.daumnomebacana.seunome.entidades.StatusViatura"></mapping>
     </session-factory>
 </hibernate-configuration>

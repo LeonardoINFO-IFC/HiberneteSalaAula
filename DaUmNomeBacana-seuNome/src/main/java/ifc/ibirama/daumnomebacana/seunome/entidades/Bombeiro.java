@@ -22,6 +22,7 @@ import java.time.LocalDate;
 public class Bombeiro {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column (name="bom_id")
     private Integer id;
     @Column (name="bom_cpf", length = 11, unique = true, nullable = false)
     private String cpf;
