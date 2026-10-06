@@ -4,10 +4,6 @@
 
 package ifc.ibirama.daumnomebacana.seunome;
 
-/**
- *
- * @author aluno
- */
 public class DaUmNomeBacanaSeuNome {
 
     public static void main(String[] args) {

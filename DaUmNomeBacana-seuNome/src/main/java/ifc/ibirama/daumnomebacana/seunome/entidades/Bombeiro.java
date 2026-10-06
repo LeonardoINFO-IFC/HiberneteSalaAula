@@ -12,10 +12,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
 
-/**
- *
- * @author aluno
- */
 
 @Entity
 @Table (name="Bombeiro")
@@ -37,72 +33,42 @@ public class Bombeiro {
 
     }
 
-    /**
-     * @return the id
-     */
     public Integer getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * @return the cpf
-     */
     public String getCpf() {
         return cpf;
     }
 
-    /**
-     * @param cpf the cpf to set
-     */
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    /**
-     * @return the dataNacimento
-     */
     public LocalDate getDataNacimento() {
         return dataNacimento;
     }
 
-    /**
-     * @param dataNacimento the dataNacimento to set
-     */
     public void setDataNacimento(LocalDate dataNacimento) {
         this.dataNacimento = dataNacimento;
     }
 
-    /**
-     * @return the nome
-     */
     public String getNome() {
         return nome;
     }
 
-    /**
-     * @param nome the nome to set
-     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    /**
-     * @return the guerra
-     */
     public String getGuerra() {
         return guerra;
     }
 
-    /**
-     * @param guerra the guerra to set
-     */
     public void setGuerra(String guerra) {
         this.guerra = guerra;
     }
