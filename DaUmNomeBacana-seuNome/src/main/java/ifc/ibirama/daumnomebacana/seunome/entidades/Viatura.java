@@ -17,26 +17,26 @@ import java.time.LocalDate;
  * @author aluno
  */
 @Entity
-@Table (name="Viatura")
+@Table(name = "Viatura")
 public class Viatura {
-    
+
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name="via_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "via_id")
     private Integer id;
-    @Column (name="via_placa", length = 7, unique = true, nullable = false)
+    @Column(name = "via_placa", length = 7, unique = true, nullable = false)
     private String placa;
-    @Column (name="via_combutivel", length = 45, nullable = false, unique = false)
+    @Column(name = "via_combutivel", length = 45, nullable = false, unique = false)
     private String combustivel;
-    @Column (name="via_ultima_revisao", nullable = false, unique = false)
+    @Column(name = "via_ultima_revisao", nullable = false, unique = false)
     private LocalDate ultimaRevisao;
-    @Column (name="via_km", nullable = false, unique = false)
+    @Column(name = "via_km", nullable = false, unique = false)
     private Integer km;
-    
-    public Viatura(){
+
+    public Viatura() {
         return;
     }
-    
+
     public Integer getId() {
         return id;
     }
@@ -76,12 +76,12 @@ public class Viatura {
     public void setKm(Integer km) {
         this.km = km;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Viatura) {
             Viatura aux = (Viatura) obj;
-            if ((aux.getId() != null) || (aux.getPlaca()!= null)) {
+            if ((aux.getId() != null) || (aux.getPlaca() != null)) {
                 if (aux.getId().equals(this.id) && (aux.getPlaca().equals(this.placa))) {
                     return true;
                 } else {

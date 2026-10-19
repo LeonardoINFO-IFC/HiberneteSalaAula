@@ -11,17 +11,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-
 @Entity
-@Table (name="tatuViatura")
+@Table(name = "tatuViatura")
 public class StatusViatura {
+
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name="stv_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "stv_id")
     private Integer id;
-    @Column (name="stv_descricao", length = 45, unique = false, nullable = false)
+    @Column(name = "stv_descricao", length = 45, unique = false, nullable = false)
     private String descricao;
-    @Column (name="stv_sigla", length = 5, unique = false, nullable = false)
+    @Column(name = "stv_sigla", length = 5, unique = false, nullable = false)
     private String sigla;
 
     public StatusViatura() {

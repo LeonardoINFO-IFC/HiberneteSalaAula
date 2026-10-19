@@ -9,26 +9,41 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
-
+import java.util.HashSet;
+import java.util.Set;
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
-@Table (name="Bombeiro")
+@Table(name = "Bombeiro")
 public class Bombeiro {
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name="bom_id")
-    private Integer id;
-    @Column (name="bom_cpf", length = 11, unique = true, nullable = false)
-    private String cpf;
-    @Column (name="bom_data_nascimento", nullable = false)
-    private LocalDate dataNacimento;
-    @Column (name="bom_nome_completo", nullable = false, length = 45)    
-    private String nome;
-    @Column (name="bom_nome_guerra", unique = true, nullable = false, length = 45)
-    private String guerra;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "bom_id")
+    private Integer id;
+    @Column(name = "bom_cpf", length = 11, unique = true, nullable = false)
+    private String cpf;
+    @Column(name = "bom_data_nascimento", nullable = false)
+    private LocalDate dataNacimento;
+    @Column(name = "bom_nome_completo", nullable = false, length = 45)
+    private String nome;
+    @Column(name = "bom_nome_guerra", unique = true, nullable = false, length = 45)
+    private String guerra;
+    @OneToOne(mappedBy = "bombeiro")
+    private Usuario usuario;
+    @OneToMany(mappedBy = "bombeiro")
+    private Set<TelefoneContato> telefoneContatos = new HashSet<TelefoneContato>();
+    @ManyToMany
+    @JoinTable (name = "Bombeiro_has_Patente", joinColumns = @JoinColumn(name = "bom_id"), inverseJoinColumns = @JoinColumn (name = "pat_id"))
+    private Set<Patente> patente = new HashSet<Patente>();
+    
     public Bombeiro() {
 
     }
@@ -71,6 +86,30 @@ public class Bombeiro {
 
     public void setGuerra(String guerra) {
         this.guerra = guerra;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Set<TelefoneContato> getTelefoneContatos() {
+        return telefoneContatos;
+    }
+
+    public void setTelefoneContatos(Set<TelefoneContato> telefoneContatos) {
+        this.telefoneContatos = telefoneContatos;
+    }
+
+    public Set<Patente> getPatente() {
+        return patente;
+    }
+
+    public void setPatente(Set<Patente> patente) {
+        this.patente = patente;
     }
 
     @Override
