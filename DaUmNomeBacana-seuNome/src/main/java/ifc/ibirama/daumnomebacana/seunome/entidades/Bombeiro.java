@@ -36,16 +36,16 @@ public class Bombeiro {
     private String nome;
     @Column(name = "bom_nome_guerra", unique = true, nullable = false, length = 45)
     private String guerra;
-    @OneToOne(mappedBy = "bombeiro")
+    /*@OneToOne(mappedBy = "bombeiro")
     private Usuario usuario;
     @OneToMany(mappedBy = "bombeiro")
     private Set<TelefoneContato> telefoneContatos = new HashSet<TelefoneContato>();
     @ManyToMany
     @JoinTable (name = "Bombeiro_has_Patente", joinColumns = @JoinColumn(name = "bom_id"), inverseJoinColumns = @JoinColumn (name = "pat_id"))
-    private Set<Patente> patente = new HashSet<Patente>();
+    private Set<Patente> patente = new HashSet<Patente>();*/
     
     public Bombeiro() {
-
+        return;
     }
 
     public Integer getId() {
@@ -88,7 +88,7 @@ public class Bombeiro {
         this.guerra = guerra;
     }
 
-    public Usuario getUsuario() {
+    /*public Usuario getUsuario() {
         return usuario;
     }
 
@@ -110,7 +110,7 @@ public class Bombeiro {
 
     public void setPatente(Set<Patente> patente) {
         this.patente = patente;
-    }
+    }*/
 
     @Override
     public boolean equals(Object obj) {
