@@ -9,11 +9,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
+import java.util.Objects;
 
-@Entity
-@Table(name = "tatuViatura")
-public class StatusViatura {
+@PrimaryKeyJoinColumn (name = "id")
+public class StatusViatura extends Viatura{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +26,7 @@ public class StatusViatura {
     private String sigla;
 
     public StatusViatura() {
-        return;
+        
     }
 
     public Integer getId() {
@@ -53,26 +54,26 @@ public class StatusViatura {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof StatusViatura) {
-            StatusViatura aux = (StatusViatura) obj;
-            if ((aux.getId() != null)) {
-                if (aux.getId().equals(this.id)) {
-                    return true;
-                } else {
-                    return false;
-                }
-
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        return hash;
     }
 
     @Override
-    public int hashCode() {
-        return getClass().hashCode();
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final StatusViatura other = (StatusViatura) obj;
+        return Objects.equals(this.id, other.id);
     }
+
+    
 }

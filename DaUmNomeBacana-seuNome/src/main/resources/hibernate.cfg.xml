@@ -7,9 +7,9 @@
     <session-factory>
         <!-- Configurações do Banco de Dados (MySQL) -->
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Bombeiro</property>
-        <property name="hibernate.connection.username">meu login</property>
-        <property name="hibernate.connection.password">minha senha</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/SistemaBombeiro</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>
 
         <!-- Dialeto SQL para MySQL 8 -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -20,8 +20,13 @@
 
         <!-- Cria/Atualiza as tabelas automaticamente no banco -->
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <mapping class="ifc.ibirama.daumnomebacana.seunome.entidades.Bombeiro"></mapping>
-        <mapping class="ifc.ibirama.daumnomebacana.seunome.entidades.Viatura"></mapping>
-        <mapping class="ifc.ibirama.daumnomebacana.seunome.entidades.StatusViatura"></mapping>
+        <mapping class="ifc.ibirama.daumnomebacana.seunome.entidades.Bombeiro"/>
+        <mapping class="ifc.ibirama.daumnomebacana.seunome.entidades.Viatura"/>
+        <mapping class="ifc.ibirama.daumnomebacana.seunome.entidades.Especialista"/>
+        <mapping class="ifc.ibirama.daumnomebacana.seunome.entidades.StatusBombeiro"/>
+        <mapping class="ifc.ibirama.daumnomebacana.seunome.entidades.Patente"/>
+        <mapping class="ifc.ibirama.daumnomebacana.seunome.entidades.TelefoneContato"/>
+        <mapping class="ifc.ibirama.daumnomebacana.seunome.entidades.Usuario"/>
+        <mapping class="ifc.ibirama.daumnomebacana.seunome.entidades.StatusViatura"/>
     </session-factory>
 </hibernate-configuration>

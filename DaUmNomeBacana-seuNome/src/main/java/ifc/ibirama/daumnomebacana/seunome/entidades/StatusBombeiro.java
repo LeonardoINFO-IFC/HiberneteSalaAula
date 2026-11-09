@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.util.Objects;
 
 /**
  *
@@ -29,7 +30,7 @@ public class StatusBombeiro {
     private String sigla;
 
     public StatusBombeiro() {
-        return;
+        
     }
 
     public Integer getId() {
@@ -57,26 +58,26 @@ public class StatusBombeiro {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof StatusViatura) {
-            StatusViatura aux = (StatusViatura) obj;
-            if ((aux.getId() != null)) {
-                if (aux.getId().equals(this.id)) {
-                    return true;
-                } else {
-                    return false;
-                }
-
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+    public int hashCode() {
+        int hash = 3;
+        hash = 61 * hash + Objects.hashCode(this.id);
+        return hash;
     }
 
     @Override
-    public int hashCode() {
-        return getClass().hashCode();
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final StatusBombeiro other = (StatusBombeiro) obj;
+        return Objects.equals(this.id, other.id);
     }
+
+    
 }

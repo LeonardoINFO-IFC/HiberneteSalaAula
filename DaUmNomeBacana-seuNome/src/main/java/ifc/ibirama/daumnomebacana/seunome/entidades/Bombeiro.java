@@ -45,7 +45,7 @@ public class Bombeiro {
     private Set<Patente> patente = new HashSet<Patente>();*/
     
     public Bombeiro() {
-        return;
+       
     }
 
     public Integer getId() {

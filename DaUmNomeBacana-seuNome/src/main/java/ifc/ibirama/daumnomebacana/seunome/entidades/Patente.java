@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Patente {
@@ -61,29 +62,29 @@ public class Patente {
     public void setBombeiro(Set<Bombeiro> bombeiro) {
         this.bombeiro = bombeiro;
     }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Patente) {
-            Patente aux = (Patente) obj;
-            if ((aux.getId() != null) || (aux.getSigla()!= null)) {
-                if (aux.getId().equals(this.id) && (aux.getSigla().equals(this.sigla))) {
-                    return true;
-                } else {
-                    return false;
-                }
-
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
 
     @Override
     public int hashCode() {
-        return getClass().hashCode();
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        return hash;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Patente other = (Patente) obj;
+        return Objects.equals(this.id, other.id);
+    }
+    
+    
     
 }

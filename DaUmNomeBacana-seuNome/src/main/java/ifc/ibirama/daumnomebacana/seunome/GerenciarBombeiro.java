@@ -5,6 +5,7 @@
 package ifc.ibirama.daumnomebacana.seunome;
 
 import ifc.ibirama.daumnomebacana.seunome.entidades.Bombeiro;
+import ifc.ibirama.daumnomebacana.seunome.entidades.Usuario;
 import ifc.ibirama.daumnomebacana.seunome.util.HibernateUtil;
 import java.time.LocalDate;
 import java.time.Month;
@@ -27,12 +28,20 @@ public class GerenciarBombeiro {
         bombeiro01.setNome("Leonardo Henrique de Andrade");
         bombeiro01.setGuerra("Andrade");
         bombeiro01.setDataNacimento(LocalDate.of(2010, Month.FEBRUARY, 5));
+        
+        Usuario usuario01 = new Usuario();
+        usuario01.setLogin("teuPai");
+        usuario01.setSenha("707070seNaoDer70deNovo");
 
+        bombeiro01.setUsuario(usuario01);
+        usuario01.setBombeiro(bombeiro01);
+        
         try {
             tranacao = sessao.beginTransaction();
 
             sessao.persist(bombeiro01);
-
+            sessao.persist(usuario01);
+            
             tranacao.commit();
             System.out.println("Bombeiro 'salvo");
             sessao.close();

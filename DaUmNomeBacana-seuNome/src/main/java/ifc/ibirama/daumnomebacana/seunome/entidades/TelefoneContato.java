@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name = "Telefone_Contato")
@@ -66,27 +67,27 @@ public class TelefoneContato {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof TelefoneContato) {
-            TelefoneContato aux = (TelefoneContato) obj;
-            if ((aux.getId() != null) || (aux.getNumero() != null)) {
-                if (aux.getId().equals(this.id) && (aux.getNumero().equals(this.numero))) {
-                    return true;
-                } else {
-                    return false;
-                }
-
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+    public int hashCode() {
+        int hash = 5;
+        hash = 37 * hash + Objects.hashCode(this.id);
+        return hash;
     }
 
     @Override
-    public int hashCode() {
-        return getClass().hashCode();
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TelefoneContato other = (TelefoneContato) obj;
+        return Objects.equals(this.id, other.id);
     }
+
+    
 
 }

@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
 
@@ -17,8 +19,8 @@ import java.time.LocalDate;
  * @author aluno
  */
 @Entity
-@Table(name = "Viatura")
-public class Viatura {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Viatura {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +36,7 @@ public class Viatura {
     private Integer km;
 
     public Viatura() {
-        return;
+     
     }
 
     public Integer getId() {
